@@ -1,0 +1,5 @@
+u8x8_d_max7219.c:106:16:u8x8_d_max7219_generic	40	static
+u8x8_d_max7219.c:195:9:u8x8_d_max7219_32x8	24	static
+u8x8_d_max7219.c:243:9:u8x8_d_max7219_16x16	24	static
+u8x8_d_max7219.c:290:9:u8x8_d_max7219_8x8	24	static
+u8x8_d_max7219.c:431:9:u8x8_d_max7219_64x8	24	static
