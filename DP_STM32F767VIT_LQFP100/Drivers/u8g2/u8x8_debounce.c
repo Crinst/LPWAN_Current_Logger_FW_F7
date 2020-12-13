@@ -139,7 +139,6 @@ uint8_t u8x8_GetMenuEvent(u8x8_t *u8x8)
 #if defined(__GNUC__) && !defined(__CYGWIN__)
 # pragma weak  u8x8_GetMenuEvent
 #endif
-# pragma weak  u8x8_GetMenuEvent
 uint8_t u8x8_GetMenuEvent(u8x8_t *u8x8)
 {
   uint8_t pin_state;

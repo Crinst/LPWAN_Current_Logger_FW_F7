@@ -283,10 +283,10 @@ uint8_t i2cDataToWrite[3];
 uint8_t i2cDataToRead[3];
 
 // OLED SSD1106
-uint8_t i2cDeviceAddressOLED = (0x3C << 1);		// I2C OLED address eq. 0x78 without shift
+//uint8_t i2cDeviceAddressOLED = (0x3C << 1);		// I2C OLED address eq. 0x78 without shift
 
 // ST7528 LCD
-//uint8_t i2cDeviceAddressOLED = (0x3F << 1);		// I2C OLED address eq. 0x78 without shift
+uint8_t i2cDeviceAddressOLED = (0x3F << 1);		// I2C OLED address eq. 0x78 without shift
 //uint8_t i2cDeviceAddressOLED = 0x3F;		// I2C OLED address eq. 0x78 without shift
 
 
@@ -3483,7 +3483,7 @@ uint8_t u8x8_byte_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
       //i2c_transfer(u8x8_GetI2CAddress(u8x8) >> 1, buf_idx, buffer);
       //HAL_I2C_Master_Transmit(&hi2c4, i2cDeviceAddress, (uint8_t *) arg_ptr, arg_int, 1000);
       //HAL_I2C_Master_Transmit(&hi2c4, (uint16_t) i2cDeviceAddressOLED, &buffer[0], buf_idx, 1000);
-      HAL_I2C_Master_Transmit(&hi2c1, (uint16_t) i2cDeviceAddressOLED, &buffer[0], buf_idx, 200);
+      HAL_I2C_Master_Transmit(&hi2c1, (uint16_t) i2cDeviceAddressOLED, &buffer[0], buf_idx, 5);
       //HAL_I2C_Master_Transmit_DMA(&hi2c4, (uint16_t) i2cDeviceAddressOLED, &buffer[0], buf_idx);
       microDelay(1);
       break;
@@ -4722,8 +4722,8 @@ int main(void)
   // SCREEN INIT
 
   //u8g2_Setup_sh1106_i2c_128x64_noname_f(&u8g2, U8G2_R0, u8x8_byte_i2c, u8x8_stm32_gpio_and_delay); //[page buffer, size = 256 bytes]  //u8x8_byte_sw_i2c
-  u8g2_Setup_sh1106_i2c_128x64_noname_f(&u8g2, U8G2_R2, u8x8_byte_i2c, u8x8_stm32_gpio_and_delay); //[page buffer, size = 256 bytes]  //u8x8_byte_sw_i2c // 180 degree rotation
-  //u8g2_Setup_st7528_i2c_nhd_c160100_f(&u8g2, U8G2_R0, u8x8_byte_i2c, u8x8_stm32_gpio_and_delay); //[page buffer, size = full page XYZ bytes]  //u8x8_byte_sw_i2c
+  //u8g2_Setup_sh1106_i2c_128x64_noname_f(&u8g2, U8G2_R2, u8x8_byte_i2c, u8x8_stm32_gpio_and_delay); //[page buffer, size = 256 bytes]  //u8x8_byte_sw_i2c // 180 degree rotation
+  u8g2_Setup_st7528_i2c_nhd_c160100_f(&u8g2, U8G2_R2, u8x8_byte_i2c, u8x8_stm32_gpio_and_delay); //[page buffer, size = full page XYZ bytes]  //u8x8_byte_sw_i2c
   u8g2_InitDisplay(&u8g2);
 
   u8g2_SetPowerSave(&u8g2, 0);

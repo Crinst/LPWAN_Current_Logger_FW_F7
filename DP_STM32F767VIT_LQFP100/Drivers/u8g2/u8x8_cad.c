@@ -460,7 +460,7 @@ uint8_t u8x8_cad_ssd13xx_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *a
       /* so this is done here. Even further, only 24 bytes will be sent, */
       /* because there will be another byte (DC) required during the transfer */
       p = arg_ptr;
-      while( arg_int > 24 )
+       while( arg_int > 24 )
       {
 	u8x8_i2c_data_transfer(u8x8, 24, p);
 	arg_int-=24;
@@ -495,25 +495,24 @@ uint8_t u8x8_cad_ssd13xx_fast_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, vo
       /* improved version, takeover from ld7032 */
       /* assumes, that the args of a command is not longer than 31 bytes */
       /* speed improvement is about 4% compared to the classic version */
-    	/*
       if ( in_transfer != 0 )
 	 u8x8_byte_EndTransfer(u8x8); 
       
       u8x8_byte_StartTransfer(u8x8);
       u8x8_byte_SendByte(u8x8, 0x000);	/* cmd byte for ssd13xx controller */
-     /* u8x8_byte_SendByte(u8x8, arg_int);
+      u8x8_byte_SendByte(u8x8, arg_int);
       in_transfer = 1;
       /* lightning version: can replace the improved version from above */
       /* the drawback of the lightning version is this: The complete init sequence */
       /* must fit into the 32 byte Arduino Wire buffer, which might not always be the case */
       /* speed improvement is about 6% compared to the classic version */
-       if ( in_transfer == 0 )
-       {
-    	   u8x8_byte_StartTransfer(u8x8);
-    	   u8x8_byte_SendByte(u8x8, 0x000);	/* cmd byte for ssd13xx controller */
-    	   in_transfer = 1;
-       }
-       u8x8_byte_SendByte(u8x8, arg_int);
+      // if ( in_transfer == 0 )
+	// {
+	//   u8x8_byte_StartTransfer(u8x8);
+	//   u8x8_byte_SendByte(u8x8, 0x000);	/* cmd byte for ssd13xx controller */
+	//   in_transfer = 1;
+	// }
+	//u8x8_byte_SendByte(u8x8, arg_int);
       break;
     case U8X8_MSG_CAD_SEND_ARG:
       u8x8_byte_SendByte(u8x8, arg_int);
